@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+ 
+</head>
+
+<body>
+  <div class="container-fluid">
+    <header class="display-4">Thực hành jquery với dự án quản lý trung tâm</header>
+    <!-- Phan tab menu -->
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" href="#DanhSachNguoiDung" role="tab" data-toggle="tab">Danh sách người dùng</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#DanhSachKhoaHoc" role="tab" data-toggle="tab" id="navKhoaHoc">Danh sách khóa học</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#ThongKe" role="tab" data-toggle="tab">Thống kê</a>
+      </li>
+    </ul>
+    <br />
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <!--Danh sách người dùng -->
+      <div role="tabpanel" class="tab-pane  in active" id="DanhSachNguoiDung">
+        <div class="input-group">
+          <input id="input-search" type="text" class="form-control" placeholder="Search for...">
+
+          <div id="noidung"></div>
+          <span class="input-group-btn">
+            <button id="btnTimKiemNguoiDung" class="btn btn-success" type="button">Tìm kiếm</button>
+          </span>
+        </div>
+        <div class="clear-fix"></div>
+        <br />
+        <button id="btnThemNguoiDung" class="btn btn-success">
+          Thêm người dùng
+          <i class="fa fa-plus"></i>
+        </button>
+       
+        <div class="clear-fix"></div>
+        <br />
+        <div class="tblNguoiDung" id="tblNguoiDung">
+          <table class="table">
+            <thead>
+              <th></th>
+              <th>Tài khoản</th>
+              <th>Mật khẩu</th>
+              <th>Họ tên</th>
+              <th>Email</th>
+              <th>Số điện thoại</th>
+            </thead>
+            <tbody id="tblDanhSachNguoiDung">
+
+            </tbody>
+          </table>
+        </div>
+         
+        <br />
+      </div>
+     
+      <!-- Kết thúc danh sách người dùng -->
+      <!-- Danh sách khóa học -->
+      <div role="tabpanel" class="tab-pane fade" id="DanhSachKhoaHoc">
+       
+           <button id="btnLoadKhoaHoc" class="btn btn-success">
+          Thêm Khóa Học
+          <i class="fa fa-plus"></i>
+        </button>
+        
+          <div class="tblKhoaHoc" id="tblNguoiDung">
+          <table class="table">
+            <thead>
+              <th>Mã Khóa Học</th>
+              <th>Tên Khóa Học</th>
+              <th>Mô Tả</th>
+              <th>Hình Ảnh</th>
+              <th>Lượt Xem</th>
+              <th>Người Tạo</th>
+              
+            </thead>
+            <tbody id="tblDanhSachKhoaHoc">
+
+            </tbody>
+          </table>
+        </div>
+        
+      </div>
+      <!-- Kết thúc danh sách khóa học -->
+      <!-- Thống kê -->
+      <div role="tabpanel" class="tab-pane fade" id="ThongKe">
+
+      </div>
+      <!-- Kết thúc thống kê -->
+    </div>
+
+
+
+    <!--KetThuc Tabmenu-->
+
+
+
+    <!-- Button to Open the Modal -->
+    <button id="btnModal" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+      Open modal
+    </button>
+
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Modal Heading</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <!-- Modal body -->
+          <div class="modal-body">
+            <div class="form-group">
+              <label>Tài khoản</label>
+              <input id="TaiKhoan" class="form-control" placeholder="Nhập vào tài khoản" value="Luong Anh Tuan">
+            </div>
+            <div class="form-group">
+              <label>Họ tên</label>
+              <input id="HoTen" class="form-control" placeholder="Nhập vào họ tên">
+            </div>
+            <div class="form-group">
+              <label>Mật khẩu</label>
+              <input id="MatKhau" class="form-control" placeholder="Nhập vào mật khẩu" type="password">
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input id="Email" class="form-control" placeholder="Nhập vào Email">
+            </div>
+            <div class="form-group">
+              <label>Số điện thoại</label>
+              <input id="SoDienThoai"  class="form-control" placeholder="Nhập vào số điện thoại">
+            </div>
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+        
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="container"></div>
+  <style>
+    #container {
+      min-width: 310px;
+      max-width: 800px;
+      height: 400px;
+      margin: 0 auto
+    }
+  </style>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l"
+    crossorigin="anonymous"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c"
+    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="NguoiDung.js"></script>
+    <script type="text/javascript" src="DanhSachKhoaHoc.js"></script>
+    <script src="DanhSachNguoiDung.js"></script>
+    <script src="NguoiDungService.js"></script>
+    <script src="KhoaHoc.js"></script>
+    <script src="KhoaHocService.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
